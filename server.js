@@ -143,10 +143,7 @@ app.use('/scripts', express.static(__dirname + '/node_modules/underscore'));
 // ================
 // db connection
 // ================
-mongoose.connect('mongodb://localhost/betsee', (err) => {
-  console.log('Mongoose db ' + err);
-  if (err) throw err;
-});
+mongoose.connect('mongodb://localhost/betsee');
 
 let db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
