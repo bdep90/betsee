@@ -2,13 +2,22 @@
 const jwt = require('jsonwebtoken');
 const User = require('../models/user');
 const secret = process.env.SECRET;
+// let bridge = new User({
+//     email: 'bridge@gmail.com',
+//     username: 'bridge',
+//     password: 'bridge'
+//   });
 
 // create new user
 function create(req, res) {
-  console.log('User.create hit.');
-  let newUser = new User(req.body.user);
+  var newUser = new User({
+    email: req.body.email,
+    username: req.body.username,
+    password: req.body.password
+  });
 
   newUser.save((err, user) => {
+    console.log(user);
     if (err) {
       console.log('Saving user error: ' + err);
       return res.status(401).send({ message: 'User not saved.' });
@@ -30,6 +39,7 @@ function find(req, res) {
 // edit current user
 function update(req, res) {
   let currentUser = req.body.user;
+  console.log(req);
 
   User.findOne({ username: currentUser.username }, (err, user) => {
     console.log('Cannot find current user: ' + err);
@@ -63,29 +73,31 @@ function destroy(req, res) {
 // authenticate current user
 function auth(req, res) {
   // find user
-  User.findOne({ username: req.body.username }, (err, user) => {
-    console.log('Cannot find user for auth: ' + err);
+   User.findOne({
+     username: req.body.username
+   }, (err, user) => {
+     console.log(err);
+     if (err) throw err;
 
-    if(!user) {
-      res.json({ success: false, message: 'Auth failed. User not found.' });
-    } else if (user) {
-      // match password
-      if (user.password != req.body.password) {
-        res.json({ success: false, message: 'Auth failed. Wrong password.' });
-      } //else {
-        // create and return token if user found and password matches
-        // verify token in angular controller
-        // let token = jwt.sign(user, secret, {
-        //   expiresIn: 3600
-        // });
-        // res.json({
-        //   success: true,
-        //   message: 'You have a token!',
-        //   token: token
-        // });
-      //}
-    };
-  });
+     if(!user) {
+       res.json({ success: false, message: 'Auth failed. User not found.' });
+     } else if (user) {
+       // match password
+       if (user.password != req.body.password) {
+         res.json({ success: false, message: 'Auth failed. Wrong password.' });
+       } else {
+         // create and return token if user found and password matches
+         let token = jwt.sign(user, secret, {
+           expiresIn: 3600
+         });
+         res.json({
+           success: true,
+           message: 'You have a token!',
+           token: token
+         });
+       }
+     }
+   });
 }
 
 
