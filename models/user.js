@@ -5,9 +5,9 @@ const secret   = process.env.SECRET;
 let ProjectSchema = require('./project.js').schema;
 
 let userSchema = new mongoose.Schema({
-  email: { type: String, required: true, unique: true},
-  username: { type: String, required: true, unique: true},
-  password: { type: String, required: true},
+  email: String, //{ type: String, required: true, unique: true},
+  username: String, //{ type: String, required: true, unique: true},
+  password: String, //{ type: String, required: true},
   bio: String,
   avatar: String,
   token: String,
