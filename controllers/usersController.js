@@ -10,9 +10,9 @@ const secret = process.env.SECRET;
 
 // create new user
 function create(req, res) {
-  var newUser = new User({
-    email: req.body.email,
+  let newUser = new User({
     username: req.body.username,
+    email:    req.body.email,
     password: req.body.password
   });
 
@@ -25,6 +25,36 @@ function create(req, res) {
       console.log('User successfully saved!');
       res.json({ success: true, user });
     }
+  });
+}
+
+// authenticate current user
+function auth(req, res) {
+  // find user
+   User.findOne({
+     username: req.body.username
+   }, (err, user) => {
+     console.log(err);
+     if (err) throw err;
+
+     if(!user) {
+       res.json({ success: false, message: 'Auth failed. User not found.' });
+     } else if (user) {
+       // match password
+       if (user.password != req.body.password) {
+         res.json({ success: false, message: 'Auth failed. Wrong password.' });
+       } else {
+         // create and return token if user found and password matches
+         let token = jwt.sign(user, secret, {
+           expiresIn: 3600
+         });
+         res.json({
+           success: true,
+           message: 'You have a token!',
+           token: token
+         });
+       }
+     }
   });
 }
 
@@ -70,35 +100,6 @@ function destroy(req, res) {
   });
 }
 
-// authenticate current user
-function auth(req, res) {
-  // find user
-   User.findOne({
-     username: req.body.username
-   }, (err, user) => {
-     console.log(err);
-     if (err) throw err;
-
-     if(!user) {
-       res.json({ success: false, message: 'Auth failed. User not found.' });
-     } else if (user) {
-       // match password
-       if (user.password != req.body.password) {
-         res.json({ success: false, message: 'Auth failed. Wrong password.' });
-       } else {
-         // create and return token if user found and password matches
-         let token = jwt.sign(user, secret, {
-           expiresIn: 3600
-         });
-         res.json({
-           success: true,
-           message: 'You have a token!',
-           token: token
-         });
-       }
-     }
-   });
-}
 
 
 // share

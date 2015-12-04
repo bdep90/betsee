@@ -5,6 +5,12 @@ const user       = require('../controllers/usersController');
 const router     = express.Router();
 const secret     = process.env.SECRET;
 
+router.route('/user/signup')
+  .post(user.create);
+
+router.route('/user/auth')
+  .post(user.auth);
+
 router.route('/user')
   .all(expressJwt({
     secret: secret,
@@ -13,11 +19,5 @@ router.route('/user')
   .get(user.find)
   .put(user.update)
   .delete(user.destroy);
-
-router.route('/user/auth')
-  .post(user.auth);
-
-router.route('/user/signup')
-  .post(user.create);
 
 module.exports = router;

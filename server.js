@@ -6,6 +6,12 @@ const logger   = require('morgan');
 const parser   = require('body-parser');
 const app      = express();
 
+const userRoutes    = require('./routes/userRoutes');
+const projectRoutes = require('./routes/projectRoutes');
+const patternRoutes = require('./routes/patternRoutes');
+// const etsyRoutes    = require('./routes/etsyRoutes');
+
+
 
 // ================
 // configuration
@@ -15,35 +21,52 @@ app.use(parser.json()); // comes before routes
 app.use(parser.urlencoded({ extended: false}));
 
 
+
 // ================
 // routes
 // ================
-app.get('/betsee', (req, res) => { // root route
-  console.log('Hit Betsee');
-});
-
-const userRoutes    = require('./routes/userRoutes');
-const projectRoutes = require('./routes/projectRoutes');
-const patternRoutes = require('./routes/patternRoutes');
-// const etsyRoutes    = require('./routes/etsyRoutes');
-
 app.use('/', userRoutes); // register routes
 // app.use('/', projectRoutes);
 // app.use('/', patternRoutes);
 // app.use('/etsy', etsyRoutes); // ??
 
 
-// // ==============================
-// // user authentication test route
-// // ==============================
+
+// ==============================
+// user authentication test route
+// ==============================
 // const jwt     = require('jsonwebtoken');
 // const secret  = process.env.SECRET;
 // // $http.defaults.headers.common['x-access-token'] = jwt //to send the token on every request in angular
 //
 // let testRoute = express.Router();
 //
+// // use routes
+// app.use('/test', testRoute);
+//
+// // root route for testing
+// testRoute.get('/', (req, res) => {
+//   res.json({ message: 'Test route on.' })
+// });
+//
+// // test new user
+// const User = require('./models/user');
+// testRoute.post('/seed', (req, res) => {
+//   // sample user
+//   let bridge = new User(req.body);
+//
+//   // save sample user
+//   bridge.save((err) => {
+//     console.log('Saving sample user error');
+//     if (err) throw err;
+//
+//     console.log('Bridge saved!');
+//     res.json({ success: true, bridge });
+//   });
+// });
+//
 // // post route for auth
-// testRoute.post('/authenticate', (req, res) => {
+// testRoute.post('/auth', (req, res) => {
 //   // find user
 //   User.findOne({
 //     username: req.body.username
@@ -64,8 +87,8 @@ app.use('/', userRoutes); // register routes
 //         });
 //         res.json({
 //           success: true,
-//           message: 'You have a token!',
-//           token: token
+//           message: 'Authed!' //'You have a token!'
+//           // token: token
 //         });
 //       }
 //     }
@@ -97,39 +120,11 @@ app.use('/', userRoutes); // register routes
 //   }
 // });
 //
-// // root route for testing
-// testRoute.get('/', (req, res) => {
-//   res.json({ message: 'Test route on.' })
-// });
-//
 // // all users route
 // testRoute.get('/users', (req, res) => {
 //   User.find({}, (err, users) => {
 //     console.log('all user route ' + err);
 //     res.json(users);
-//   });
-// });
-//
-// // use routes
-// app.use('/test', testRoute);
-//
-// // test new user
-// const User = require('./models/user');
-// app.get('/setup', (req, res) => {
-//   // sample user
-//   let bridge = new User({
-//     email: 'bridge@gmail.com',
-//     username: 'bridge',
-//     password: 'bridge'
-//   });
-//
-//   // save sample user
-//   bridge.save((err) => {
-//     console.log('Saving sample user error');
-//     if (err) throw err;
-//
-//     console.log('Bridge saved!');
-//     res.json({ success: true });
 //   });
 // });
 
@@ -142,16 +137,12 @@ app.use('/scripts', express.static(__dirname + '/node_modules/angular'));
 app.use('/scripts', express.static(__dirname + '/node_modules/underscore'));
 
 
+
 // ================
 // db connection
 // ================
 mongoose.connect('mongodb://localhost/betsee');
 
-let db = mongoose.connection;
-db.on('error', console.error.bind(console, 'connection error:'));
-db.once('open', (callback) => {
-  console.log('Mongoose connected');
-});
 
 
 // ================
