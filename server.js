@@ -25,9 +25,9 @@ app.use(parser.urlencoded({ extended: false}));
 // ================
 // routes
 // ================
-app.use('/', userRoutes); // register routes
-// app.use('/', projectRoutes);
-// app.use('/', patternRoutes);
+// app.use('/', userRoutes); // register routes
+app.use('/', projectRoutes);
+app.use('/', patternRoutes);
 // app.use('/etsy', etsyRoutes); // ??
 
 

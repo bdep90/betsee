@@ -1,10 +1,9 @@
 'use strict';
-const mongoose = require('mongoose');
+let mongoose = require('mongoose');
 let ObjectId = mongoose.Schema.ObjectId;
 
 
 let patternSchema = new mongoose.Schema({
-  title: String,
   supplies: String,
   steps: [String],
   source: String,
@@ -13,4 +12,5 @@ let patternSchema = new mongoose.Schema({
 
 
 // share
-module.exports = mongoose.model('patterns', patternSchema);
+let Pattern = mongoose.model('pattern', patternSchema);
+module.exports = Pattern;
