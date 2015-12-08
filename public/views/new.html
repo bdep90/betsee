@@ -1,0 +1,40 @@
+<nav class="tabs">
+  <h1 style=>BETSEE</h1>
+  <div class="links">
+    <a ui-sref-active="active" ui-sref="home">HOME</a>
+    <a ui-sref-active="active" ui-sref="new">NEW PROJECT</a>
+  </div>
+</nav>
+
+<!-- CREATE A PROJECT -->
+<main>
+  <body ng-app="BetseeProjects">
+    <section ng-controller="ProjectsCtrl as projects">
+      <form id="newProject">
+        <p>
+          <label for="addProject-author"></label>
+          <input type="text" id="addProject-author" placeholder="AUTHOR" ng-model="project.addProject.name">
+        </p>
+        <p>
+          <label for="addProject-email"></label>
+          <input type="text" id="addProject-email" placeholder="EMAIL" ng-model="project.addProject.email">
+        </p>
+        <p>
+          <label for="addProject-title"></label>
+          <input type="text" id="addProject-title" placeholder="POJECT TITLE" ng-model="project.addProject.project_title">
+        </p>
+        <p>
+          <label for="addProject-refimg"></label>
+          <input type="text" id="addProject-refimg" placeholder="REFERENCE IMAGE URL" ng-model="project.addProject.refimg">
+        </p>
+        <p>
+          <label for="addProject-img"></label>
+          <input type="text" id="addProject-img" placeholder="FINAL PRODUCT URL" ng-model="project.addProject.img">
+        </p>
+        <p>
+          <button ng-click="projects.addProject()">SUBMIT</button>
+        </p>
+      </form>
+    </section>
+  </body>
+</main>

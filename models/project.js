@@ -12,10 +12,11 @@ let projectSchema = new mongoose.Schema({
   created_at: { type: Date, default: Date.now },
   updated_at: { type: Date, default: Date.now },
   // _author: { type: ObjectId, ref: 'user' },
-  pattern: [{
-    type: ObjectId,
-    ref: 'pattern'
-  }]
+  pattern: {
+    supplies: String,
+    steps: [String],
+    source: String
+  }
 })
 
 

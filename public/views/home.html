@@ -1,0 +1,33 @@
+<nav class="tabs">
+  <h1 style=>BETSEE</h1>
+  <div class="links">
+    <a ui-sref-active="active" ui-sref="home">HOME</a>
+    <a ui-sref-active="active" ui-sref="new">NEW PROJECT</a>
+  </div>
+</nav>
+
+<!-- HOME PAGE: ALL PROJECTS -->
+<main>
+  <!-- <body ng-app="BetseeProjects"> -->
+    <section ng-controller="ProjectsCtrl as projects">
+      <ul id="allProjects">
+        <li ng-repeat="project in projects.all" id="{{project._id}}">
+          <img src="{{project.refimg}}" height="150px" width="150px"><img/>
+          <div>
+            Reference
+          </div>
+          <img src="{{project.img}}" height="150px" width="150px"><img/>
+          <div>
+            Finished Product
+          </div><br>
+          {{project.author}}<br>
+          {{project.email}}<br>
+          {{project.project_title}}<br>
+          {{project.created_at}}<br>
+          <a ui-sref-active="active" ui-sref="edit">EDIT PROJECT</a>
+          <button id="delete" ng-click="projects.deleteProject(project)">X</a>
+        </li>
+      </ul>
+    </section>
+  <!-- </body> -->
+</main>

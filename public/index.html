@@ -1,68 +1,21 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8">
     <title>Betsee</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.4/handlebars.js"></script>
-    <!-- <script src="/scripts/angular.js"></script>
-    <script src="/scripts/underscore.js"></script> -->
-    <!-- <script src='js/userController.js'></script>
-    <script src='js/projectController.js'></script>
-    <script src='js/patternController.js'></script> -->
-    <!-- <script src='css/normalize.css'></script>
-    <script src='css/skeleton.css'></script>
-    <script src='css/style.css'></script> -->
+    <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet" type="text/css">
+
+    <script src="/scripts/angular.js"></script>
+    <script src="/scripts/underscore.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.js"></script>
+
+    <script src="js/app.js"></script>
+    <script src="js/projectsController.js"></script>
+    <link rel="stylesheet" href="css/style.css">
   </head>
-  <body>
-    <h2>Betsee</h2>
+  <body ng-app="BetseeProjects">
 
-    <form id="signup-user" action="index.html" method="post">
-      SIGN UP BELOW
-      <p>
-        <input type="text" placeholder="USERNAME">
-      </p>
-      <p>
-        <input type="text" placeholder="EMAIL">
-      </p>
-      <p>
-        <input type="text" placeholder="PASSWORD">
-      </p>
-      <button class="submit">SIGN UP</button>
-    </form>
+    <div class="wrapper" ng-controller="ProjectsCtrl as projects" ui-view></div>
 
-    <form id="signin-user" action="index.html" method="post">
-      SIGN IN BELOW
-      <p>
-        <input type="text" placeholder="USERNAME" >
-      </p>
-      <p>
-        <input type="text" placeholder="EMAIL">
-      </p>
-      <p>
-        <input type="text" placeholder="PASSWORD">
-      </p>
-      <button class="submit">SIGN IN</button>
-    </form>
-
-    <form id="edit-user" action="index.html" method="put">
-      EDIT ACCOUNT BELOW
-      <p>
-        <input type="text" placeholder="USERNAME" value="">
-      </p>
-      <p>
-        <input type="text" placeholder="EMAIL" value="">
-      </p>
-      <p>
-        <input type="text" placeholder="PASSWORD" value="">
-      </p>
-      <button class="submit">SUBMIT</button>
-    </form>
-
-    <div id="users">
-
-    </div>
-
-    <script src="script.js"></script>
   </body>
 </html>

@@ -6,10 +6,9 @@ const logger   = require('morgan');
 const parser   = require('body-parser');
 const app      = express();
 
-const userRoutes    = require('./routes/userRoutes');
+// const userRoutes    = require('./routes/userRoutes');
 const projectRoutes = require('./routes/projectRoutes');
-const patternRoutes = require('./routes/patternRoutes');
-// const etsyRoutes    = require('./routes/etsyRoutes');
+// const patternRoutes = require('./routes/patternRoutes');
 
 
 
@@ -18,17 +17,31 @@ const patternRoutes = require('./routes/patternRoutes');
 // ================
 app.use(logger('dev')); // to log requests to the console
 app.use(parser.json()); // comes before routes
-app.use(parser.urlencoded({ extended: false}));
+app.use(parser.urlencoded({ extended: true }));
+
+
+// ================
+// path config
+// ================
+app.use('/', express.static('public'));
+app.use('/scripts', express.static(__dirname + '/node_modules/angular'));
+app.use('/scripts', express.static(__dirname + '/node_modules/underscore'));
+//app.set('views', path.join(__dirname, './public/views'));
+//app.set('view engine', 'html');
+// app.engine('html', require('ejs').renderFile);
 
 
 
 // ================
 // routes
 // ================
+// app.get('/', (req, res) => {
+//   console.log('Betsee hit.');
+//   // res.render('home.html');
+// });
 // app.use('/', userRoutes); // register routes
 app.use('/', projectRoutes);
-app.use('/', patternRoutes);
-// app.use('/etsy', etsyRoutes); // ??
+// app.use('/', patternRoutes);
 
 
 
@@ -127,14 +140,6 @@ app.use('/', patternRoutes);
 //     res.json(users);
 //   });
 // });
-
-
-// ================
-// dir delegation
-// ================
-app.use('/', express.static('public'));
-app.use('/scripts', express.static(__dirname + '/node_modules/angular'));
-app.use('/scripts', express.static(__dirname + '/node_modules/underscore'));
 
 
 
