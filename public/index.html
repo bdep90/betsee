@@ -1,16 +1,19 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8">
     <title>Betsee</title>
-    <script src='js/userController.js'></script>
-    <script src='js/projectController.js'></script>
-    <script src='js/patternController.js'></script>
-    <!-- <script src='css/normalize.css'></script>
-    <script src='css/skeleton.css'></script>
-    <script src='css/style.css'></script> -->
-  </head>
-  <body>
+    <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet" type="text/css">
 
+    <script src="/scripts/angular.js"></script>
+    <script src="/scripts/underscore.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.js"></script>
+
+    <script src="js/app.js"></script>
+    <script src="js/projectsController.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+  <body ng-app="BetseeProjects">
+    <div class="wrapper" ng-controller="ProjectsCtrl as projects" ui-view></div>
   </body>
 </html>

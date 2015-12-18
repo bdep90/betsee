@@ -1,0 +1,50 @@
+<nav class="tabs">
+  <div id="title">BETSEE</div>
+  <div class="table">
+    <ul class="nav-ul">
+      <li class="nav-li"><a ui-sref-active="active" ui-sref="home">HOME</a></li>
+      <li class="nav-li"><a ui-sref-active="active" ui-sref="add">NEW PROJECT</a></li>
+    </ul>
+  </div>
+</nav>
+<!-- CREATE A PROJECT -->
+<form>
+  <h2>YOUR INFORMATION</h2>
+  <div class="addProject-form-attr-1">
+    <label for="addProject-author">CREATOR:</label>
+    <input type="text" id="addProject-author" placeholder="Bobby Newport" ng-model="project.addProject.name">
+  </div>
+  <div class="addProject-form-attr-1">
+    <label for="addProject-email">EMAIL:</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <input type="text" id="addProject-email" placeholder="bobby@addportempire.com" ng-model="project.addProject.email">
+  </div>
+  <h2>PROJECT INFORMATION</h2>
+  <div class="addProject-form-attr-2">
+    <label for="addProject-title">PROJECT TITLE:</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <input type="text" id="addProject-title" placeholder="Yatch Plush" ng-model="project.addProject.project_title">
+  </div>
+  <div class="addProject-form-attr-2">
+    <label for="addProject-refimg">LINK TO REFERENCE IMG:</label>
+    <input type="text" id="addProject-refimg" placeholder="https://yatchplush.com" ng-model="project.addProject.refimg">
+  </div>
+  <div class="addProject-form-attr-2">
+    <label for="addProject-img">LINK TO FINAL PRODUCT:</label>
+    <input type="text" id="addProject-img" placeholder="https://bobby'syatchplush.newportempire.com" ng-model="project.addProject.img">
+  </div>
+  <div class="addProject-form-attr-2">
+    <label for="addProject-pattern-source">REFERENCE IMG SOURCE:</label>
+    <input type="text" id="addProject-pattern-source" placeholder="Etsy" ng-model="project.addProject.source">
+  </div>
+  <h2>PROJECT PATTERN</h2>
+  <div class="addProject-form-attr-3">
+    <label for="addProject-pattern-supplies">LIST OF SUPPLIES:</label>
+    <input type="text" id="addProject-pattern-supplies" placeholder="red yarn, blue yarn, white yarn, crochet needle, stuffing" ng-model="project.addProject.supplies">
+  </div>
+  <div class="addProject-form-attr-3">
+    <label for="addProject-pattern-steps">PATTERN STEPS:</label>&nbsp;&nbsp;&nbsp;&nbsp;
+    <input type="text" id="addProject-pattern-steps" placeholder="STEPS" ng-model="project.addProject.steps">
+  </div>
+  <div>
+    <button ng-click="projects.addProject()">SUBMIT</button>
+  </div>
+</form>

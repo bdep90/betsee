@@ -1,0 +1,45 @@
+<nav class="tabs">
+  <div id="title">BETSEE</div>
+  <div class="table">
+    <ul class="nav-ul">
+      <li class="nav-li"><a ui-sref-active="active" ui-sref="home">HOME</a></li>
+      <li class="nav-li"><a ui-sref-active="active" ui-sref="new">NEW PROJECT</a></li>
+    </ul>
+  </div>
+</nav>
+<!-- HOME PAGE: ALL PROJECTS -->
+<ul id="allProjects">
+  <li ng-repeat="project in projects.all" id="{{project._id}}">
+    <img src="{{project.refimg}}" height="150px" width="150px"><img/>
+    <img src="{{project.img}}" height="150px" width="150px"><img/>
+    <div class="captions">
+      Reference & Finished Product
+    </div><br>
+    <div id="project-title">
+      <strong>{{project.project_title}}</strong>
+    </div>
+    <div class="all-li">
+      <div class="all-li-attr">
+        <strong>Creator:</strong> {{project.author}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <a ui-sref-active="active" ui-sref="edit">EDIT</a>
+        <button id="delete" ng-click="projects.deleteProject(project)">X</button>
+      </div>
+      <div class="all-li-attr">
+        <strong>Email:</strong> {{project.email}}
+      </div>
+      <div class="all-li-attr">
+        <strong>Supplies:</strong> {{project.pattern['supplies']}}
+      </div>
+      <div class="all-li-attr">
+        <strong>Pattern:</strong><br>
+        <div ng-repeat="item in project.pattern.steps">
+          - {{item}}
+        </div>
+      </div>
+      <div class="all-li-attr">
+        <strong> Reference Source:</strong> {{project.pattern['source']}}
+      </div>
+      <!-- to do: convert created_at timestamp and add "Created: " here -->
+    </div>
+  </li>
+</ul>
