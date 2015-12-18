@@ -43,15 +43,3 @@ title
 supplies
 steps  
 source  
-
-
-
-
-
-
-Planning:
-- Day 1: wireframes (name, dependencies, game plan, research api) & set up schemas
-- Day 2: api & authentication
-- Day 3: api & models
-- Day 4: angular & CSS
-- Day 5: edit documentation and deploy

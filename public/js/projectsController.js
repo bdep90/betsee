@@ -21,7 +21,7 @@ function ProjectsCtrl ($http) { //constructor function
   // homepage - get all projects
   allProjects();
   function allProjects() {
-    $http.get('http://localhost:3000/projects')
+    $http.get('https://betsee.herokuapp.com/projects')
       .success((data) => {
         self.all = data;
       })
@@ -30,9 +30,10 @@ function ProjectsCtrl ($http) { //constructor function
       })
   }
 
+
   // post new project
   function addProject() {
-    $http.post('http://localhost:3000/projects', self.newProject)
+    $http.post('https://betsee.herokuapp.com/projects', self.newProject)
       .success((data) => {
         allProjects();
       })
@@ -44,7 +45,7 @@ function ProjectsCtrl ($http) { //constructor function
 
   // update project
   function updateProject(project) {
-    $http.put('http://localhost:3000/projects/' + project._id, self.updateProject)
+    $http.put('https://betsee.herokuapp.com/projects/' + project._id, self.updateProject)
       .success((data) => {
         allProjects();
       })
@@ -56,7 +57,7 @@ function ProjectsCtrl ($http) { //constructor function
 
   // delete project
   function deleteProject(project) {
-    $http.delete('http://localhost:3000/projects/' + project._id)
+    $http.delete('https://betsee.herokuapp.com/projects/' + project._id)
       .success((data) => {
         let index = self.all.indexOf(project);
         self.all.splice(index, 1);

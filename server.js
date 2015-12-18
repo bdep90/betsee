@@ -146,14 +146,14 @@ app.use('/', projectRoutes);
 // ================
 // db connection
 // ================
-mongoose.connect('mongodb://localhost/betsee');
+mongoose.connect(process.env.MONGOLAB_URI || 'mongodb://localhost/betsee');
 
 
 
 // ================
 // server
 // ================
-const server = app.listen(3000, () => {
+const server = app.listen(process.env.PORT || 3000, () => {
   const host = server.address().address;
   const port = server.address().port;
   console.log('Server now running on ' + port);
