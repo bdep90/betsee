@@ -14,6 +14,7 @@ function ProjectsCtrl ($http) { //constructor function
   self.all = [];
   self.allProjects = allProjects;
   self.addProject = addProject;
+  self.updateProject = updateProject;
   self.newProject = {};
   self.deleteProject = deleteProject;
 
@@ -33,7 +34,7 @@ function ProjectsCtrl ($http) { //constructor function
   function addProject() {
     $http.post('http://localhost:3000/projects', self.newProject)
       .success((data) => {
-        self.all = data;
+        allProjects();
       })
       .error((data) => {
         console.log('New project error: ' + data);
@@ -43,9 +44,9 @@ function ProjectsCtrl ($http) { //constructor function
 
   // update project
   function updateProject(project) {
-    $http.put('http://localhost:3000/projects/' + project._id)
+    $http.put('http://localhost:3000/projects/' + project._id, self.updateProject)
       .success((data) => {
-        self.all = data;
+        allProjects();
       })
       .error((data) => {
         console.log('Update project error: ' + data);

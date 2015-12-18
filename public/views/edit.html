@@ -1,43 +1,50 @@
 <nav class="tabs">
-  <h1 style=>BETSEE</h1>
-  <div class="links">
-    <a ui-sref-active="active" ui-sref="home">HOME</a>
-    <a ui-sref-active="active" ui-sref="new">NEW PROJECT</a>
+  <div id="title">BETSEE</div>
+  <div class="table">
+    <ul class="nav-ul">
+      <li class="nav-li"><a ui-sref-active="active" ui-sref="home">HOME</a></li>
+      <li class="nav-li"><a ui-sref-active="active" ui-sref="update">NEW PROJECT</a></li>
+    </ul>
   </div>
 </nav>
-
 <!-- EDIT INDIVIDUAL PROJECT (include option to delete) -->
-<main>
-  <body ng-app="BetseeProjects">
-    <section ng-controller="ProjectsCtrl as projects">
-      <form id="updateProject">
-        <p>
-          <label for="updateProject-author"></label>
-          <input type="text" id="updateProject-author" placeholder="AUTHOR" ng-model="project.updateProject.name">
-        </p>
-        <p>
-          <label for="updateProject-email"></label>
-          <input type="text" id="updateProject-email" placeholder="EMAIL" ng-model="project.updateProject.email">
-        </p>
-        <p>
-          <label for="updateProject-title"></label>
-          <input type="text" id="updateProject-title" placeholder="POJECT TITLE" ng-model="project.updateProject.project_title">
-        </p>
-        <p>
-          <label for="updateProject-refimg"></label>
-          <input type="text" id="updateProject-refimg" placeholder="REFERENCE IMAGE" ng-model="project.updateProject.refimg">
-        </p>
-        <p>
-          <label for="updateProject-img"></label>
-          <input type="text" id="updateProject-img" placeholder="FINAL PRODUCT" ng-model="project.updateProject.img">
-        </p>
-        <p>
-          <!-- <button class="access" ng-app="Pattern" ng-controller="PatternCtrl as pattern" ng-click="pattern.newPattern()">EDIT PATTERN</button> -->
-        </p>
-        <p>
-          <button ng-click="projects.updateProject(project)">SUBMIT</button>
-        </p>
-      </form>
-    </section>
-  </body>
-</main>
+<form>
+  <h2>YOUR INFORMATION</h2>
+  <div class="updateProject-form-attr-1">
+    <label for="updateProject-author">CREATOR:</label>
+    <input type="text" id="updateProject-author"  ng-model="projects.updateProject.name">
+  </div>
+  <!-- <div class="updateProject-form-attr-1">
+    <label for="updateProject-email">EMAIL:</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <input type="text" id="updateProject-email" placeholder="{{project.email}}" ng-model="project.email">
+  </div>
+  <h2>PROJECT INFORMATION</h2>
+  <div class="updateProject-form-attr-2">
+    <label for="updateProject-title">PROJECT TITLE:</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <input type="text" id="updateProject-title" placeholder="{{project.project_title}}" ng-model="project.project_title">
+  </div>
+  <div class="updateProject-form-attr-2">
+    <label for="updateProject-refimg">LINK TO REFERENCE IMG:</label>
+    <input type="text" id="updateProject-refimg" placeholder="{{project.refimg}}" ng-model="project.refimg">
+  </div>
+  <div class="updateProject-form-attr-2">
+    <label for="updateProject-img">LINK TO FINAL PRODUCT:</label>
+    <input type="text" id="updateProject-img" placeholder="{{project.img}}" ng-model="project.img">
+  </div>
+  <div class="updateProject-form-attr-2">
+    <label for="updateProject-pattern-source">REFERENCE IMG SOURCE:</label>
+    <input type="text" id="updateProject-pattern-source" placeholder="Etsy" ng-model="project.updateProject.source">
+  </div>
+  <h2>PROJECT PATTERN</h2>
+  <div class="updateProject-form-attr-3">
+    <label for="updateProject-pattern-supplies">LIST OF SUPPLIES:</label>
+    <input type="text" id="updateProject-pattern-supplies" placeholder="red yarn, blue yarn, white yarn, crochet needle, stuffing" ng-model="project.updateProject.supplies">
+  </div>
+  <div class="updateProject-form-attr-3">
+    <label for="updateProject-pattern-steps">PATTERN STEPS:</label>&nbsp;&nbsp;&nbsp;&nbsp;
+    <input type="text" id="updateProject-pattern-steps" placeholder="STEPS" ng-model="project.updateProject.steps">
+  </div>
+  <div>
+    <button ng-click="projects.updateProject()">SUBMIT</button>
+  </div> -->
+</form>

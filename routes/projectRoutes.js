@@ -14,7 +14,7 @@ router.get('/projects', (req, res, next) => {
 
 router.get('/projects/etsy', (req, res, next) => {
   console.log('Hitting Etsy route');
-  request('https://openapi.etsy.com/v2/listings/:listing_id/imagesapi_key=' + ETSYKEY, (err, res, body) => {
+  request('https://openapi.etsy.com/v2/taxonomy/categories/crochet/?api_key=' + ETSYKEY, (err, res, body) => {
   }).on('data', (data) => {
     res.send(data.toString());
     // for (var i = 0; i < data.length; i++) {
@@ -64,6 +64,5 @@ router.delete('/projects/:project_id', (req, res, next) => {
     res.json(projects);
   });
 });
-// 'https://openapi.etsy.com/v2/listings/:listing_id/imagesapi_key='
 
 module.exports = router;

@@ -13,9 +13,11 @@ function MainRouter ($stateProvider, $urlRouterProvider) {
       templateUrl: "./views/new.html"
     })
     .state("edit", {
-      url: "/projects",
-      templateUrl: "./views/edit.html"
+      url: '/projects/:project_id',
+      templateUrl: './views/edit.html',
+      controller: function($scope, $stateParams) {
+        $scope.project_id = $stateParams.project._id;
+      }
     })
-
   $urlRouterProvider.otherwise("/");
 }
